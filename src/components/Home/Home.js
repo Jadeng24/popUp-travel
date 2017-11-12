@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Home.scss';
+import './Home.css';
  
 class Home extends Component{ 
     constructor(){
@@ -13,7 +13,7 @@ class Home extends Component{
     render(){
         return (
             <div className='Home'>
-                Home component
+                <h1 className="content">Home component</h1>
             </div>
         )
     }

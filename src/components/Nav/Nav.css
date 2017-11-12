@@ -1,0 +1,82 @@
+@font-face {
+    font-family: Summer;
+    src: url('../Fonts/SummerRegular.otf'); 
+}
+@font-face {
+    font-family: SummerItalic;
+    src: url('../Fonts/SummerRegularItalic.otf'); 
+}
+@font-face {
+    font-family: SummerBold;
+    src: url('../Fonts/SummerBold.otf');
+}
+@font-face {
+    font-family: SummerBoldItalic;
+    src: url('../Fonts/SummerBoldItalic.otf');
+}
+@font-face {
+    font-family: SummerLight;
+    src: url('../Fonts/SummerLight.otf'); 
+}
+@font-face {
+    font-family: SummerLightItalic;
+    src: url('../Fonts/SummerLightItalic.otf'); 
+}
+
+.Nav {
+    height: 100px;
+    width: 100vw;
+    display: flex;
+    
+    align-items: center;
+    
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+}
+.navGroup {
+    
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+}
+.Nav > .navGroup a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    font-family: Summer;
+    font-size: 20pt;
+    height: 100px;
+    width: 40%;
+    
+}
+
+.navGroup a:hover {
+    
+}
+.sideNav {
+    width: 30%;
+    
+}
+.centerNav {
+    
+}
+.logoNav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    font-size: 70px;
+    font-family: SummerBold;
+    margin-top: -20px;
+    
+}
+.logoNav a{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.7); 
+    transition: .1s;
+    
+}
+.logoNav a:hover {
+   color: black;
+}

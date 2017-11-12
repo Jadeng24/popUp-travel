@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Trailers.scss';
+import './Trailers.css';
  
 class Trailers extends Component{ 
     constructor(){
