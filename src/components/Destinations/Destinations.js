@@ -31,7 +31,7 @@ class Destinations extends Component{
     };
     render(){
         return (
-            <div className='Destinations'>
+            <div className='Destinations mainContent'>
                 <h1>View images by State</h1> 
                 <div className='myMap'>
                        

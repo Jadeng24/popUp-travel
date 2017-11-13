@@ -12,7 +12,7 @@ class Contact extends Component{
  
     render(){
         return (
-            <div className='Contact'>
+            <div className='Contact mainContent'>
                 Contact Component
             </div>
         )

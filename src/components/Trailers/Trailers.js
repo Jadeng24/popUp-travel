@@ -12,7 +12,7 @@ class Trailers extends Component{
  
     render(){
         return (
-            <div className='Trailers'>
+            <div className='Trailers mainContent'>
                 Trailers Component
             </div>
         )

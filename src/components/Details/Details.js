@@ -12,7 +12,7 @@ class Details extends Component{
  
     render(){
         return (
-            <div className='Details'>
+            <div className='Details mainContent'>
                 Details of product
             </div>
         )

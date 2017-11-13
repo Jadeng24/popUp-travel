@@ -29,7 +29,7 @@
     display: flex;
     
     align-items: center;
-    
+    background: white;
     border-bottom: solid 1px rgba(0, 0, 0, 0.2);
 }
 .navGroup {
@@ -48,19 +48,17 @@
     font-size: 20pt;
     height: 100px;
     width: 40%;
-    
+    opacity: .8;
 }
 
 .navGroup a:hover {
-    
+    opacity: 1;
 }
 .sideNav {
     width: 30%;
     
 }
-.centerNav {
-    
-}
+
 .logoNav {
     display: flex;
     align-items: center;
@@ -70,13 +68,116 @@
     font-family: SummerBold;
     margin-top: -20px;
     
+    
 }
 .logoNav a{
     text-decoration: none;
     color: rgba(0, 0, 0, 0.7); 
     transition: .1s;
+    cursor: crosshair;
     
 }
 .logoNav a:hover {
    color: black;
+}
+.modal {
+    display: none;
+}
+@media (max-width: 500px){
+    .Nav {
+        height: 75px;
+        justify-content: space-between;
+    }
+   .logoNav {
+       font-size: 30pt;
+   }
+   .sideNav {
+       display: none;
+   }
+   
+   
+    .menuIcon {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+    
+   }
+   .menuIcon:hover {
+       background: rgba(51, 51, 51, 0.7);
+   }
+   .mobileNav {
+    cursor: pointer;
+    margin-right: 10px;
+    z-index: 10;
+    transition: .4s;
+   
+   }
+   .mobileNav:hover {
+       background: linear-gradient(to left, white , rgb(240, 240, 240) , white);
+   }
+   .bar1 {
+    
+     -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+    }
+    .bar2 {
+        width: 10px;
+    opacity: 0;
+    }
+    .bar3 {
+    
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
+    }
+
+    .modal {
+        position: absolute;
+        top: 75px;
+        min-height: calc(100vh - 75px);
+        width: 100vw;
+        background: rgb(249, 249, 249);
+        transition: .5s;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        
+    }
+    .modalItemsHolder {
+        display: flex;
+        flex-direction: column;
+    }
+    .modal a {
+        text-decoration: none;
+        color: black;
+        font-family: SummerBold;
+        font-size: 30pt;
+        width: 90%;
+        margin-left:5%;
+        border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+        transition: 1.2s;
+        line-height: 30pt;
+        opacity: .8;
+        padding: 5px 0;
+    }
+    .modal a:hover {
+        z-index: 10;
+        border-bottom: solid 1px white;
+        transition: .1s;
+        background: rgb(237, 237, 237);
+    }
+    .hide {
+        margin-left: -100vw;
+        transition: .4s;
+    }
+    .hide a {
+        opacity: 0;
+        margin-top: 100px;
+        margin-left: 300px;
+        font-size: 10pt;
+        transition: .5s;
+        width: 10%;
+    }
 }
