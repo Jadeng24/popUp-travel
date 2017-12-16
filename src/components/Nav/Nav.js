@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Nav.css';
 import { Link } from 'react-router-dom';
-
+import Logo from '../Assets/logo.png';
 class Nav extends Component {
     constructor() {
         super();
@@ -24,8 +24,7 @@ closeModal() {
 }
     render() {
         return (
-            <div className='Nav'>
-            
+            <div className='Nav'>                
                 {/* left side of nav */}
                 <div className='navGroup sideNav'>
                     <Link to='/destinations'> Destinations</Link>
@@ -33,9 +32,10 @@ closeModal() {
                 </div>
                 <div className='mobileNav'></div>
                 {/* center of nav */}
-                <div className='logoNav centerNav' onClick={this.closeModal}>
-                    <Link to='/'> PopUp Travel </Link>
-                </div>
+                <Link to='/'><div className='logoNav centerNav' onClick={this.closeModal}>
+                    <img src={Logo} alt='logo' className='logoImg'/>    
+                     PopUp Travel 
+                </div></Link>
                 {/* right side of nav */}
                 <div className='navGroup sideNav'>
                     <Link to='/trailers'> Trailers </Link>
@@ -43,12 +43,20 @@ closeModal() {
                     <Link to='/contact'> Contact </Link>
                 </div>
                 {/* Mobile Hambuger menu */}
-            <div className='mobileNav' onClick={this.toggleModal}>
+            {/* <div className='mobileNav' onClick={this.toggleModal}>
                     <div className={this.state.Modal ? "bar1 menuIcon" : "menuIcon"}></div>
                     <div className={this.state.Modal ? "bar2 menuIcon" : "menuIcon"}></div>
                     <div className={this.state.Modal ? "bar3 menuIcon" : "menuIcon"}></div>
                 
+                </div> */}
+                <div className='dropDownMenuBtn' onClick={this.toggleModal}>
+                    <div className={this.state.Modal ? 'bar bar1 animateBar1' : 'bar bar1'}></div>
+                    <div className={this.state.Modal ? 'bar midBar1 animateMidBar1' : 'bar midBar1'}></div>
+                    <div className={this.state.Modal ? 'bar midBar2 animateMidBar2' : 'bar midBar2'}></div>
+                    <div className={this.state.Modal ? 'bar bar3 animateBar3' : 'bar bar3'}></div>
+
                 </div>
+
 
                 <div className={this.state.Modal ? 'modal' : ' modal hide'} onClick={this.toggleModal}>
                     <div className='modalItemsHolder'>

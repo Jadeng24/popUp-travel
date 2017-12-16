@@ -43,6 +43,55 @@ table {
  border-collapse: collapse;
  border-spacing: 0;
 }
+
+
+@font-face {
+    font-family: Summer;
+    src: url('/Components/Fonts/SummerRegular.otf'); 
+}
+@font-face {
+    font-family: SummerItalic;
+    src: url('/Components/Fonts/SummerRegularItalic.otf'); 
+}
+@font-face {
+    font-family: SummerBold;
+    src: url('/Components/Fonts/SummerBold.otf');
+}
+@font-face {
+    font-family: SummerBoldItalic;
+    src: url('/Components/Fonts/SummerBoldItalic.otf');
+}
+@font-face {
+    font-family: SummerLight;
+    src: url('/Components/Fonts/SummerLight.otf'); 
+}
+@font-face {
+    font-family: SummerLightItalic;
+    src: url('/Components/Fonts/SummerLightItalic.otf'); 
+}
+
+
 .mainContent {
   min-height: calc(100vh + -100px);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width:500px){
+  .mainContent {
+    overflow-x: hidden;
+ 
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
+body {
+  overflow-x: hidden;
+}
+h2 {
+  font-family: SummerLight,sans-serif;
+  font-size: 20pt;
 }

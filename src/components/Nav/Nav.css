@@ -25,18 +25,24 @@
 
 .Nav {
     height: 100px;
-    width: 100vw;
     display: flex;
-    
+    justify-content: space-between;
     align-items: center;
     background: white;
     border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+    transition: .2s;
+}
+.Nav a {
+    text-decoration: none;
+    color: black;
 }
 .navGroup {
     
     display: flex;
     justify-content: space-around;
     align-items:center;
+    width: 30%;
+    min-width: 250px;
 }
 .Nav > .navGroup a {
     display: flex;
@@ -44,93 +50,132 @@
     justify-content: center;
     text-decoration: none;
     color: black;
-    font-family: Summer;
-    font-size: 20pt;
+    font-family: Summer, Helvetica, sans-serif;
+    font-size: 20px;
     height: 100px;
-    width: 40%;
+    /* width: 40%; */
     opacity: .8;
 }
 
 .navGroup a:hover {
     opacity: 1;
 }
-.sideNav {
-    width: 30%;
-    
-}
 
 .logoNav {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 40%;
-    font-size: 70px;
+    justify-content: flex-start;
+    font-size: 24px;
+    letter-spacing: 3px;
     font-family: SummerBold;
-    margin-top: -20px;
+    height: 100%;
     
-    
+}
+.logoImg {
+    height: 60px;
+    transition: .1s;
 }
 .logoNav a{
     text-decoration: none;
     color: rgba(0, 0, 0, 0.7); 
     transition: .1s;
-    cursor: crosshair;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
     
 }
-.logoNav a:hover {
-   color: black;
+.logoNav:hover img{
+    height: 65px;
+    cursor: pointer;
+}
+.logoNav:hover {
+    transition: .1s;
+
 }
 .modal {
     display: none;
+    z-index: 12;
 }
-@media (max-width: 500px){
+@media (max-width: 700px){
     .Nav {
         height: 75px;
         justify-content: space-between;
     }
    .logoNav {
        font-size: 30pt;
+       margin-left: 25px;
+       letter-spacing: 0px;
+        flex-direction: row;
+   }
+   .logoImg {
+       height: 60px;
+       margin-right: 10px;
    }
    .sideNav {
        display: none;
    }
-   
-   
-    .menuIcon {
-    width: 35px;
-    height: 5px;
-    background-color: #333;
-    margin: 6px 0;
-    transition: 0.4s;
-    
-   }
-   .menuIcon:hover {
-       background: rgba(51, 51, 51, 0.7);
-   }
-   .mobileNav {
+/* drop down menu BUTTON for mobile */
+.dropDownMenuBtn {
+    width: 40px;
+    height: 50px;
+    position: relative;
+    right: 10px;
     cursor: pointer;
-    margin-right: 10px;
-    z-index: 10;
-    transition: .4s;
-   
-   }
-   .mobileNav:hover {
-       background: linear-gradient(to left, white , rgb(240, 240, 240) , white);
-   }
-   .bar1 {
-    
-     -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-    transform: rotate(-45deg) translate(-9px, 6px) ;
-    }
-    .bar2 {
-        width: 10px;
+}
+/* .dropDownMenuBtn:hover .bar{
+    background: grey;
+} */
+/* sections of menu burger menu */
+.bar {
+    width: 100%;
+    height: 4px;
+    background: black;
+    transition: .5s;
+    border-radius: 2px;
+}
+.bar1 {
+    position: absolute;
+    top: 20%;
+    transition-delay: .2s;
+}
+.midBar1{
+    position: absolute;
+    top:calc(50% - 2px);
+    transition-delay: 0s;
+}
+.midBar2{
+    position: absolute;
+    top:calc(50% - 2px);
+    transition-delay: 0s;
+}
+.bar3 {
+    position: absolute;
+    bottom: 20%;
+    transition-delay: .2s;
+
+}
+/* animation section when clicked */
+.animateBar1 {
+    top:calc(50% - 3px);
     opacity: 0;
-    }
-    .bar3 {
+    transition-delay: 0s;
+}
+.animateMidBar1 {
+    transform: rotate(-45deg);
+    transition-delay: .3s;
+}
+.animateMidBar2 {
+    transform: rotate(45deg);
+    transition-delay: .3s;
+}
+.animateBar3 {
+    bottom:calc(50% - 3px);
+    transition-delay: 0s;
     
-    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-    transform: rotate(45deg) translate(-8px, -8px) ;
-    }
+    opacity: 0;
+}
+/* end of menu button */
 
     .modal {
         position: absolute;
@@ -138,6 +183,7 @@
         min-height: calc(100vh - 75px);
         width: 100vw;
         background: rgb(249, 249, 249);
+        background: white;
         transition: .5s;
         display: flex;
         flex-direction: column;
