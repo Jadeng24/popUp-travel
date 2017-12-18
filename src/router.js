@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 //Components
 import Home from './components/Home/Home';
 import About from './components/About/About';
@@ -8,6 +9,9 @@ import Destinations from './components/Destinations/Destinations';
 import Shop from './components/Shop/Shop';
 import Details from './components/Details/Details';
 import Trailers from './components/Trailers/Trailers';
+import Loading from './components/Loading/Loading.js';
+import Admin from './components/Admin/Admin.js';
+import Profile from './components/Profile/Profile.js';
 
 // Routes for url linking components(pages)
 export default (
@@ -20,6 +24,9 @@ export default (
         <Route component={Shop} path='/shop' />
         <Route component={Details} path='/details/:productid' />
         <Route component={Trailers} path='/trailers'/>
+        <Route component={Loading} path='/loading'/>
+        <Route component={Admin} path='/admin'/>
+        <Route component={Profile} path='/profile'/>
         
     </Switch>
 )

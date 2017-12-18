@@ -24,8 +24,8 @@
 }
 
 .Nav {
-    height: 100px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background: white;
@@ -36,6 +36,42 @@
     text-decoration: none;
     color: black;
 }
+
+.topSectionNav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100vw;
+    background: rgb(208, 208, 208);
+    height: 30px;
+    padding-right: 5px;
+    transition: .2s;
+}
+.topNavItem {
+display: flex;
+justify-content: center;
+align-items: center;
+background:rgb(227, 227, 227);
+margin: 0px 4px;
+border-radius: 2px;
+padding: 0px 4px;
+cursor: pointer;
+}
+.topNavItem:hover {
+    background: white;
+}
+.topNavItem >h3 {
+    font-family: Summer,Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+    padding: 2px 5px;
+}
+.bottomSectionNav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    transition: .2s;
+}
 .navGroup {
     
     display: flex;
@@ -44,7 +80,7 @@
     width: 30%;
     min-width: 250px;
 }
-.Nav > .navGroup a {
+.navGroup a {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,7 +102,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    font-size: 24px;
+    font-size: 26px;
     letter-spacing: 3px;
     font-family: SummerBold;
     height: 100%;
@@ -99,8 +135,9 @@
 }
 @media (max-width: 700px){
     .Nav {
-        height: 75px;
-        justify-content: space-between;
+    }
+    .topSectionNav {
+        height: 24px;
     }
    .logoNav {
        font-size: 30pt;
@@ -122,6 +159,7 @@
     position: relative;
     right: 10px;
     cursor: pointer;
+    
 }
 /* .dropDownMenuBtn:hover .bar{
     background: grey;

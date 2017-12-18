@@ -240,3 +240,32 @@
       margin-top: -15px;
       padding: 0px 20px;
     }
+
+    /* featured products */
+    .allProductsHolder {
+      width: 90vw;
+      min-height: 50vh;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .featuredProduct {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 230px;
+      width: 180px;
+      cursor: pointer;
+      margin: 10px 20px;
+      transition: .5s;
+      transition-delay: .2s;
+    }
+    .featuredProduct:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .featuredProductImg {
+     width: 80%;
+     max-height: 76%;
+      
+    }
