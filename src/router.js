@@ -12,7 +12,8 @@ import Trailers from './components/Trailers/Trailers';
 import Loading from './components/Loading/Loading.js';
 import Admin from './components/Admin/Admin.js';
 import Profile from './components/Profile/Profile.js';
-
+import EditProfile from './components/Profile/EditProfile.js';
+import Cart from './components/Cart/Cart.js';
 // Routes for url linking components(pages)
 export default (
 
@@ -27,6 +28,8 @@ export default (
         <Route component={Loading} path='/loading'/>
         <Route component={Admin} path='/admin'/>
         <Route component={Profile} path='/profile'/>
+        <Route component={EditProfile} path='/editprofile'/>
+        <Route component={Cart} path='/cart'/>
         
     </Switch>
 )

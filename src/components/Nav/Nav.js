@@ -39,12 +39,12 @@ class Nav extends Component {
                 {/* top section of nav */}
                 <div className='topSectionNav'>
                     <div className='topNavItem'>
-                        <i className="fa fa-shopping-cart" aria-hidden="true"></i>
-                        <h3>CART</h3>
+                        
+                        <Link to='/cart'><h3><i className="fa fa-shopping-cart" aria-hidden="true"></i> CART </h3></Link>
                     </div>
                     <div className='topNavItem'>
-                        <i className="fa fa-user-circle" aria-hidden="true"></i>
-                        {this.state.user.id ? <a href='http://localhost:3002/auth/logout'><h3>LOG OUT</h3></a> : <a href={process.env.REACT_APP_LOGIN}><h3>LOG IN</h3></a>}
+                        
+                        {this.state.user.id ? <Link to='/profile'><h3><i className="fa fa-user-circle" aria-hidden="true"></i> PROFILE</h3></Link> : <a href={process.env.REACT_APP_LOGIN}><h3><i className="fa fa-user-circle" aria-hidden="true"></i> LOG IN </h3></a>}
                     </div>
                 </div>
 

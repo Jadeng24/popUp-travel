@@ -45,7 +45,13 @@ class Loading extends Component {
     render() {
         return (
             <div className='Loading'>
-                <div class="loader"></div>
+            <h1>Loading . . .</h1>    
+                <div class="loader">
+                    <div class="loader2">
+                        <div class="loader3">
+                        </div>    
+                    </div>
+                </div>
             </div>
         )
     }

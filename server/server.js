@@ -50,15 +50,20 @@ passport.use(new Auth0Strategy({
 
         db.find_user([profile.identities[0].user_id])
             .then(user => {
+                console.log(profile.identities[0])
                 if (user[0]) {
+                    console.log('user1', user);
                     return done(null, user[0].id)
                 }
                 else {
                     //--if no user, create new user--//
+
                     const user = profile._json;
+                    console.log('user2',user);
                     db.create_user([user.given_name,
                     user.family_name,
-                    user.email,
+                        user.email,
+                        user.picture,
                         'location',
                         'state',
                         false,
@@ -110,11 +115,14 @@ passport.deserializeUser((id, done) => {
 
 //----ENDPOINTS---//
 
-//---=get all products---/
+//-------get all products---/
 app.get('/getallproducts', pc.getAllProducts);
 
-//---Send message through nodemailer---/
+//-------Send message through nodemailer---/
 app.post('/api/send_email', mc.sendEmail)
+
+//--------SaveUserInfo------------------//
+app.put('/api/saveuser/:id', uc.saveUser);
 
 
 // for setting up online

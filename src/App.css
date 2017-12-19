@@ -94,6 +94,10 @@ form {
 body {
   overflow-x: hidden;
 }
+h1{
+  font-family: SummerBold,sans-serif;
+  font-size: 24pt;
+}
 h2 {
   font-family: SummerLight,sans-serif;
   font-size: 20pt;
@@ -101,4 +105,11 @@ h2 {
 h3 {
   font-family: SummerLight,sans-serif;
   font-size: 16pt;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  opacity: .8;
 }
