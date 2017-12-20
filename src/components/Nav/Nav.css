@@ -65,6 +65,9 @@ cursor: pointer;
     letter-spacing: 2px;
     padding: 2px 5px;
 }
+.adminNavItem {
+   color: #00BCD4;
+}
 .bottomSectionNav {
     display: flex;
     flex-direction: row;

@@ -38,12 +38,26 @@ class Nav extends Component {
             <div className='Nav'>
                 {/* top section of nav */}
                 <div className='topSectionNav'>
+                    <div className={this.state.user.is_admin ? 'topNavItem' : 'hideMe'}>
+
+                        <Link to='/admin'>
+                            <h3 className='adminNavItem'>
+                                <i className="fa fa-id-card" aria-hidden="true"></i>
+                                ADMIN
+                            </h3>
+                        </Link>
+                    </div>
+
                     <div className='topNavItem'>
-                        
-                        <Link to='/cart'><h3><i className="fa fa-shopping-cart" aria-hidden="true"></i> CART </h3></Link>
+
+                        <Link to='/cart'>
+                            <h3>
+                                <i className="fa fa-shopping-cart" aria-hidden="true"></i> CART
+                            </h3>
+                        </Link>
                     </div>
                     <div className='topNavItem'>
-                        
+
                         {this.state.user.id ? <Link to='/profile'><h3><i className="fa fa-user-circle" aria-hidden="true"></i> PROFILE</h3></Link> : <a href={process.env.REACT_APP_LOGIN}><h3><i className="fa fa-user-circle" aria-hidden="true"></i> LOG IN </h3></a>}
                     </div>
                 </div>

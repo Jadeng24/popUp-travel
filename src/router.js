@@ -14,6 +14,10 @@ import Admin from './components/Admin/Admin.js';
 import Profile from './components/Profile/Profile.js';
 import EditProfile from './components/Profile/EditProfile.js';
 import Cart from './components/Cart/Cart.js';
+import ManageUsers from './components/Admin/ManageUsers/ManageUsers.js';
+import ManagePhotos from './components/Admin/ManagePhotos/ManagePhotos.js';
+import ManageProducts from './components/Admin/ManageProducts/ManageProducts.js';
+import ManageTrailers from './components/Admin/ManageTrailers/ManageTrailers.js';
 // Routes for url linking components(pages)
 export default (
 
@@ -26,10 +30,15 @@ export default (
         <Route component={Details} path='/details/:productid' />
         <Route component={Trailers} path='/trailers'/>
         <Route component={Loading} path='/loading'/>
-        <Route component={Admin} path='/admin'/>
         <Route component={Profile} path='/profile'/>
         <Route component={EditProfile} path='/editprofile'/>
-        <Route component={Cart} path='/cart'/>
+        <Route component={Cart} path='/cart' />
+        <Route component={Admin} path='/admin' />
+        <Route component={ManageUsers} path='/manageusers' />
+        <Route component={ManagePhotos} path='/managephotos' />
+        <Route component={ManageProducts} path='/manageproducts' />
+        <Route component={ManageTrailers} path='/managetrailers' />
+        
         
     </Switch>
 )
