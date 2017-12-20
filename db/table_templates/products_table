@@ -3,15 +3,6 @@ CREATE TABLE products
     title VARCHAR(25),
     description VARCHAR(200),
     image VARCHAR(100),
-    price INT,
+    price DECIMAL NOT NULL,
     in_stock BOOL
 )
-
-    INSERT INTO products 
-(title, description, image, price,in_stock)
-VALUES(
-    'Zumbo Shoes',
-    'These are from australia, built to last',
-    'http://lp.hm.com/hmprod?set=key[source],value[/model/2017/F00%200518980%20003%2066%201099.jpg]&set=key[rotate],value[]&set=key[width],value[]&set=key[height],value[]&set=key[x],value[]&set=key[y],value[]&set=key[type],value[STILL_LIFE_FRONT]&set=key[hmver],value[1]&set=key[quality],value[80]&set=key[size],value[346x405]&call=url[file:/mobile/v2/product]',
-    179, 
-    true);

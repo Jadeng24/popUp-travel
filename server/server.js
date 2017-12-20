@@ -117,7 +117,7 @@ passport.deserializeUser((id, done) => {
 
 //-------get all products---/
 app.get('/getallproducts', pc.getAllProducts);
-
+app.post('/addproduct', pc.addProduct);
 //-------Send message through nodemailer---/
 app.post('/api/send_email', mc.sendEmail)
 
