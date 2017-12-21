@@ -115,11 +115,16 @@ passport.deserializeUser((id, done) => {
 
 //----ENDPOINTS---//
 
+//-------Send message through nodemailer---/
+app.post('/api/send_email', mc.sendEmail)
+
+
 //-------get all products---/
 app.get('/getallproducts', pc.getAllProducts);
 app.post('/addproduct', pc.addProduct);
-//-------Send message through nodemailer---/
-app.post('/api/send_email', mc.sendEmail)
+app.delete('/removeproduct/:id', pc.removeProduct);
+
+
 
 //--------SaveUserInfo------------------//
 app.put('/api/saveuser/:id', uc.saveUser);

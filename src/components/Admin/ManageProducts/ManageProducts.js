@@ -23,6 +23,8 @@ class ManageProducts extends Component {
         this.handleDrop = this.handleDrop.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.saveProduct = this.saveProduct.bind(this);
+        this.removeProduct = this.removeProduct.bind(this);
+        this.getProducts = this.getProducts.bind(this);
     }
     componentDidMount() {
         // getting all products
@@ -74,7 +76,7 @@ class ManageProducts extends Component {
 
         })
     }
- 
+
     handleInStock = (event, index, value) => this.setState({ in_stock: value });
 
     saveProduct() {
@@ -89,11 +91,24 @@ class ManageProducts extends Component {
         } else {
             alert('Please add a title, price, in stock, and description.')
         }
-        
+
     }
 
-
-
+    removeProduct(id) {
+        axios.delete(`/removeproduct/${id}`).then(
+            axios.get('/getallproducts').then(products => {
+                this.setState({
+                    products: products.data
+                })
+            }))
+    }
+    getProducts() {
+        axios.get('/getallproducts').then(products => {
+            this.setState({
+                products: products.data
+            })
+        })
+    }
     render() {
 
 
@@ -115,13 +130,13 @@ class ManageProducts extends Component {
             flexDirection: 'column',
         }
         const TextFieldsAddProducts = () => (
-            <div style={{display: 'flex',justifyContent:'center',flexDirection:'column',alignItems:'center'}}>
+            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
                 <TextField
                     hintText=''
                     floatingLabelText="Title"
                     value={this.state.title ? this.state.title : ''}
                     onChange={(e) => this.handleChange('title', e.target.value)}
-                    style={{ width: '100%',maxWidth:'500px', minWidth: '100px' }}
+                    style={{ width: '100%', maxWidth: '500px', minWidth: '100px' }}
                 /><br />
                 <TextField
                     hintText=''
@@ -156,14 +171,20 @@ class ManageProducts extends Component {
         const allProducts = this.state.products.map((product, i) => {
             return (
                 <div key={i} className='manageProductItem'>
+                    <div className='manageProductHeader'>
+                        <div className='manageInStock'>{product.in_stock ? <h2 className='inStock manageInStock'>In Stock</h2> : <h2 className='outOfStock manageInStock'>Out of Stock</h2>}</div>    
+                        <i className="fa fa-trash" aria-hidden="true" onClick={() => this.removeProduct(product.id)}></i>
+                    </div>
+
                     <img src={product.image} alt={product.title} className='manageProductImg' />
                     <h2>{product.title}</h2>
+
                 </div>
             )
         })
 
 
-         
+
         //=====| RETURN |==================================
         return (
             <div className='ManageProducts'>
@@ -184,10 +205,10 @@ class ManageProducts extends Component {
                                     <h2 className='dropZoneText'>Upload Photo</h2>
                                 </Dropzone>
                                 {TextFieldsAddProducts()}
-                                <button className='addProductBtn' onClick={()=>this.saveProduct()}>Save</button>
+                                <button className='addProductBtn' onClick={() => this.saveProduct()}>Save</button>
                             </div>
                         </Tab>
-                        <Tab label="Edit Products" value="b">
+                        <Tab label="Remove A Product" value="b" onClick={() => this.getProducts()}>
                             <div className='tabItemHolder'>
                                 <h2 style={tabStyles.headline}>View all Products</h2>
                                 <div className='manageProductsHolder'>{allProducts}</div>
@@ -195,7 +216,7 @@ class ManageProducts extends Component {
                         </Tab>
                     </Tabs>
                 </div>
-                
+
             </div>
         )
     }

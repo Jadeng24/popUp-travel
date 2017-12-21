@@ -54,7 +54,7 @@ class Admin extends Component {
                 <div className='adminNav'>
 
                     <img src={user.image} alt='admin' className='adminPhoto' />
-
+                    <h3>Welcome back {user.first_name}</h3>
                 </div>
                 <div className='adminContent'>
                     

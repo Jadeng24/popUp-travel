@@ -28,7 +28,7 @@ class Loading extends Component {
             } else {
                 if (res.data.new_user) {
 
-                    window.location.assign('http://localhost:3000/#/profile')
+                    window.location.assign('http://localhost:3000/#/editprofile')
 
 
                 }

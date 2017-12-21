@@ -164,8 +164,8 @@ class EditProfile extends Component {
                 {/*===| RIGHT PROFILE SECTION |=================================*/}
                 <div className='EditrightProfile'>
                     <div className='EdittopRightProfile'>
-                        <h3>NAME</h3>{TextFieldName()}   
-                        <h3>{TextFieldLocation_city()} {user.location_state} </h3>
+                        {TextFieldName()}   
+                        <h3>{TextFieldLocation_city()} </h3>
                         <h3>{user.email}</h3>
                     </div>
                     <div className='EditbottomRightProfile'>

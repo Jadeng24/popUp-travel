@@ -11,5 +11,11 @@ module.exports = {
         const db = req.app.get('db');
         const product = req.body;
         db.add_product(product.title, product.description, product.imgUrl, product.price,product.in_stock)
+    },
+    removeProduct: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+
+        db.remove_product([id]);
     }
 }
