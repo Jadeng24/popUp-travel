@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Admin.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import PlaceholderImage from '../Assets/person.png';
 class Admin extends Component {
     constructor() {
         super();
@@ -53,11 +54,12 @@ class Admin extends Component {
                 {/* -----admin content----- */}
                 <div className='adminNav'>
 
-                    <img src={user.image} alt='admin' className='adminPhoto' />
-                    <h3>Welcome back {user.first_name}</h3>
+                 <Link to='/profile'><img src={this.state.user.image ? user.image : PlaceholderImage} alt='admin' className='adminPhoto' /></Link>
+                    <h2>Welcome back {user.first_name}</h2>
                 </div>
                 <div className='adminContent'>
-                    
+                    <h1 className='adminDashboardH1'>Dashboard</h1>
+                    <div className='adminItemHolder'>
                     <Link to='/manageproducts'>
                         <div className='adminItem'>
                             <i className="fa fa-dropbox adminItemIcon" aria-hidden="true"></i>
@@ -82,7 +84,7 @@ class Admin extends Component {
                             <h2>Trailers</h2>
                         </div>
                     </Link>
-                    
+                    </div>
                 </div>
             </div>
         )

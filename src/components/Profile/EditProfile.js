@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './EditProfile.css';
 import axios from 'axios';
-import PlaceholderImg from '../Assets/pic1.jpg';
+import PlaceholderImg from '../Assets/person.png';
 import { Link } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 import TextField from 'material-ui/TextField';

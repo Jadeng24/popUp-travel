@@ -17,5 +17,15 @@ module.exports = {
         const { id } = req.params;
 
         db.remove_product([id]);
+    },
+    changeProductStatus: (req, res) => {
+        const db = req.app.get('db');
+        const product = req.body;
+        const productId = req.params.myId;
+        const productStatus = req.params.notStatus
+        console.log('contrler')
+        db.change_product_status([productId, productStatus]).then(product => {
+            res.send(product);
+        });
     }
 }

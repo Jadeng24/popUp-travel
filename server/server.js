@@ -123,8 +123,8 @@ app.post('/api/send_email', mc.sendEmail)
 app.get('/getallproducts', pc.getAllProducts);
 app.post('/addproduct', pc.addProduct);
 app.delete('/removeproduct/:id', pc.removeProduct);
-
-
+app.put('/productstatus/:myId/:notStatus', pc.changeProductStatus);
+    // `/productstatus/${myId}/${myStatus}`
 
 //--------SaveUserInfo------------------//
 app.put('/api/saveuser/:id', uc.saveUser);

@@ -7,6 +7,7 @@ import { Tabs, Tab } from 'material-ui/Tabs';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 import PlaceholderImg from '../../Assets/noProduct.png';
+import { Link } from 'react-router-dom';
 class ManageProducts extends Component {
     constructor() {
         super();
@@ -25,6 +26,7 @@ class ManageProducts extends Component {
         this.saveProduct = this.saveProduct.bind(this);
         this.removeProduct = this.removeProduct.bind(this);
         this.getProducts = this.getProducts.bind(this);
+        this.InOutofStock = this.InOutofStock.bind(this);
     }
     componentDidMount() {
         // getting all products
@@ -109,6 +111,18 @@ class ManageProducts extends Component {
             })
         })
     }
+    InOutofStock(myId,myStatus) {
+        
+        const notStatus = !myStatus;
+        console.log('id',myId, 'status',notStatus)
+        axios.put(`/productstatus/${myId}/${notStatus}`).then(
+            axios.get('/getallproducts').then(products => {
+                this.setState({
+                    products: products.data
+                })
+            })
+        )
+    }
     render() {
 
 
@@ -130,7 +144,7 @@ class ManageProducts extends Component {
             flexDirection: 'column',
         }
         const TextFieldsAddProducts = () => (
-            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center',width: '100%' }}>
                 <TextField
                     hintText=''
                     floatingLabelText="Title"
@@ -172,7 +186,9 @@ class ManageProducts extends Component {
             return (
                 <div key={i} className='manageProductItem'>
                     <div className='manageProductHeader'>
-                        <div className='manageInStock'>{product.in_stock ? <h2 className='inStock manageInStock'>In Stock</h2> : <h2 className='outOfStock manageInStock'>Out of Stock</h2>}</div>    
+                        {/* change if product is in stock or out of stock */}
+                        <div className='manageInStock' onClick={() => this.InOutofStock(product.id, product.in_stock)}>{product.in_stock ? <h2 className='inStock manageInStock'>In Stock</h2> : <h2 className='outOfStock manageInStock'>Out of Stock</h2>}</div>    
+                        {/* remove product from db */}
                         <i className="fa fa-trash" aria-hidden="true" onClick={() => this.removeProduct(product.id)}></i>
                     </div>
 
@@ -193,25 +209,33 @@ class ManageProducts extends Component {
                         value={this.state.tab}
                         onChange={this.handleTabChange}
                     >
-                        <Tab label="Add a Product" value="a">
+                        
+                        
+                        <Tab label="Manage Products" value="a" onClick={() => this.getProducts()}
+                        >
+                            <Link to='/admin'><i className="fa fa-chevron-left" aria-hidden="true"></i></Link>     
                             <div className='tabItemHolder'>
-                                {/*===| CLOUDINARY |======================*/}
-                                <Dropzone
-                                    onDrop={this.handleDrop}
-                                    multiple
-                                    accept="image/*"
-                                    style={dropZoneStyles}>
-                                    <img src={this.state.imgUrl ? this.state.imgUrl : PlaceholderImg} alt='profileimg' className='EditprofileImage' />
-                                    <h2 className='dropZoneText'>Upload Photo</h2>
-                                </Dropzone>
-                                {TextFieldsAddProducts()}
-                                <button className='addProductBtn' onClick={() => this.saveProduct()}>Save</button>
-                            </div>
-                        </Tab>
-                        <Tab label="Remove A Product" value="b" onClick={() => this.getProducts()}>
-                            <div className='tabItemHolder'>
+                                   
                                 <h2 style={tabStyles.headline}>View all Products</h2>
                                 <div className='manageProductsHolder'>{allProducts}</div>
+                            </div>
+                        </Tab>
+                        <Tab label="Add a Product" value="b" className='tabButton'>
+                            <Link to='/admin'><i className="fa fa-chevron-left" aria-hidden="true"></i></Link>
+                            <div className='tabItemHolder'>
+                                {/*===| CLOUDINARY |======================*/}
+                                <div className='cloudinary'>
+                                    <Dropzone
+                                        onDrop={this.handleDrop}
+                                        multiple
+                                        accept="image/*"
+                                        style={dropZoneStyles}>
+                                        <img src={this.state.imgUrl ? this.state.imgUrl : PlaceholderImg} alt='profileimg' className='EditprofileImage' />
+                                        <h2 className='dropZoneText'>{this.state.imgUrl ? 'Change Product Image' : 'Upload Product Image'}</h2>
+                                    </Dropzone>
+                                </div>
+                                {TextFieldsAddProducts()}
+                                <button className='addProductBtn' onClick={() => this.saveProduct()}>Save</button>
                             </div>
                         </Tab>
                     </Tabs>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Profile.css';
 import axios from 'axios';
-import PlaceholderImg from './../Assets/pic2.jpg';
+import PlaceholderImg from './../Assets/person.png';
 import { Link } from 'react-router-dom';
 
 class Profile extends Component {
