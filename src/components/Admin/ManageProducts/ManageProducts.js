@@ -43,7 +43,6 @@ class ManageProducts extends Component {
     };
     handleDrop = files => {
         const uploaders = files.map(file => {
-            // Initial FormData
             const formData = new FormData();
             formData.append("file", file);
             formData.append("tags", `codeinfuse, medium, gist`);
