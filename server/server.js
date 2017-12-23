@@ -12,7 +12,8 @@ const express = require('express')
 //---controllers---//
 const uc = require('./controllers/usersController.js')
     , pc = require('./controllers/productsController.js')
-    , mc = require('./controllers/mail_controller.js');
+    , mc = require('./controllers/mail_controller.js')
+    , ic = require('./controllers/imagesController');
 
 const app = express();
 
@@ -115,19 +116,28 @@ passport.deserializeUser((id, done) => {
 
 //----ENDPOINTS---//
 
+
+//--------SaveUserInfo------------------//
+app.put('/api/saveuser/:id', uc.saveUser);
+
+
 //-------Send message through nodemailer---/
 app.post('/api/send_email', mc.sendEmail)
 
 
-//-------get all products---/
+//-------products-------/
 app.get('/getallproducts', pc.getAllProducts);
 app.post('/addproduct', pc.addProduct);
 app.delete('/removeproduct/:id', pc.removeProduct);
 app.put('/productstatus/:myId/:notStatus', pc.changeProductStatus);
     // `/productstatus/${myId}/${myStatus}`
 
-//--------SaveUserInfo------------------//
-app.put('/api/saveuser/:id', uc.saveUser);
+
+//-------photos----------/
+app.get('/getallimages', ic.getAllImages);
+app.post('/addimage', ic.addImage);
+
+
 
 
 // for setting up online

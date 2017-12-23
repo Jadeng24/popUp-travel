@@ -27,6 +27,7 @@ class ManageProducts extends Component {
         this.removeProduct = this.removeProduct.bind(this);
         this.getProducts = this.getProducts.bind(this);
         this.InOutofStock = this.InOutofStock.bind(this);
+        this.handleTabChange = this.handleTabChange.bind(this);
     }
     componentDidMount() {
         // getting all products

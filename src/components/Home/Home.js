@@ -12,7 +12,8 @@ class Home extends Component {
         super();
 
         this.state = {
-            products: []
+            products: [],
+            photos: [],
         }
     }
     componentDidMount() {
@@ -27,6 +28,12 @@ class Home extends Component {
             .then(res => {
                 console.log(res.data);
             })
+        // getting all images
+        axios.get('/getallimages').then(images => {
+            this.setState({
+                photos: images.data
+            }, () => console.log(this.state.photos))
+        })
         
     }
     render() {
@@ -40,11 +47,23 @@ class Home extends Component {
                 </div>
             )
         })
+        // map of all products to be rendered below
+        const allPhotos = this.state.photos.map((photo, i) => {
+            return (
+                <div key={i}>
+                    
+                    <img src={photo.image} alt={photo.title}/>
+                    <p className="legend">{photo.title}</p>
+                </div>
+            )
+        })
         return (
             <div className='Home mainContent'>
                 <div className='CarouselHolder'>
                     <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} interval={6000} showStatus={false}>
-                        <div>
+                        {allPhotos}
+                        
+                        {/* <div>
                             <img src={pic1} alt='scenery' />
                             <p className="legend">Legend 1</p>
                         </div>
@@ -67,7 +86,7 @@ class Home extends Component {
                         <div>
                             <img src={pic3} alt='scenery' />
                             <p className="legend">Legend 3</p>
-                        </div>
+                        </div> */}
                     </Carousel>
                 </div>
                 {/* end of carousel holder */}
