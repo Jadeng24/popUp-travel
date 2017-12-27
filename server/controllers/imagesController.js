@@ -11,5 +11,10 @@ module.exports = {
         db.get_all_images().then(images => {
             res.send(images);
         })
-    }     
+    },
+    removeImage: (req, res) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+        db.remove_image([id]);
+    },    
 }

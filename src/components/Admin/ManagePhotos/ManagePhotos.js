@@ -80,7 +80,14 @@ class ManagePhotos extends Component{
     saveImage() {
         axios.post('/addimage', this.state);
     }
-
+    removeImage(id) {
+        axios.delete(`/removeimage/${id}`).then(
+            axios.get('/getallimages').then(images => {
+                this.setState({
+                    images: images.data
+                })
+            }))
+    }
     // saveImage() {
     //     if (this.state.title && this.state.price && this.state.description) {
     //         axios.post('/addproduct', this.state).then(() => {
@@ -119,7 +126,7 @@ class ManagePhotos extends Component{
                 <div key={i} className='manageProductItem'>
                     <div className='manageProductHeader'>
                         {/* remove product from db */}
-                        {/* <i className="fa fa-trash" aria-hidden="true" onClick={() => this.removePhoto(photo.id)}></i> */}
+                        <i className="fa fa-trash" aria-hidden="true" onClick={() => this.removeImage(photo.id)}></i>
                     </div>
 
                     <img src={photo.image} alt={photo.title} className='manageProductImg' />

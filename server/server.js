@@ -136,7 +136,7 @@ app.put('/productstatus/:myId/:notStatus', pc.changeProductStatus);
 //-------photos----------/
 app.get('/getallimages', ic.getAllImages);
 app.post('/addimage', ic.addImage);
-
+app.delete('/removeimage/:id', ic.removeImage);
 
 
 

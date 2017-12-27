@@ -1,19 +1,37 @@
 import React, { Component } from 'react';
 import './Shop.css';
- 
-class Shop extends Component{ 
-    constructor(){
+import axios from 'axios';
+
+class Shop extends Component {
+    constructor() {
         super();
- 
+
         this.state = {
-            
+            products: []
         }
     }
- 
-    render(){
+    componentDidMount() {
+        axios.get('/getallproducts').then(products => {
+            this.setState({
+                products: products.data
+            })
+        })
+    }
+
+    render() {
+        const allProducts = this.state.products.map((product, i) => {
+            return (
+                <div key={i} className='featuredProduct'>
+
+                    <img src={product.image} alt={product.title} className='featuredProductImg' />
+                    {product.title}
+                </div>
+            )
+        })
+
         return (
             <div className='Shop mainContent'>
-                Shop Component
+                {allProducts}
             </div>
         )
     }
