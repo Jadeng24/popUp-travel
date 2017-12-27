@@ -35,3 +35,7 @@ transition: .1s;
     font-family: Summer;
     font-size: 20pt;
 }
+
+.google-map {
+    background: red;
+}

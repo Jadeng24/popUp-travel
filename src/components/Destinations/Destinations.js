@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Destinations.css';
 import USAMap from 'react-usa-map';
+
 class Destinations extends Component{ 
     constructor(){
         super();
@@ -29,13 +30,19 @@ class Destinations extends Component{
             }
         };
     };
-    render(){
+    render() {
+        
         return (
             <div className='Destinations mainContent'>
                 <h1>View images by State</h1> 
                 <div className='myMap'>
                        
-                    <USAMap customize={this.statesFilling()} onClick={this.mapHandler} defaultFill='black' width={400} /></div>
+                    <USAMap customize={this.statesFilling()} onClick={this.mapHandler} defaultFill='black' width={400} />
+                </div>
+
+                <div className='googleMap'>
+
+                </div>
             </div>
         )
     }

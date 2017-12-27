@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Shop.css';
 import axios from 'axios';
 
+
 class Shop extends Component {
     constructor() {
         super();
@@ -19,6 +20,8 @@ class Shop extends Component {
     }
 
     render() {
+
+
         const allProducts = this.state.products.map((product, i) => {
             return (
                 <div key={i} className='featuredProduct'>
