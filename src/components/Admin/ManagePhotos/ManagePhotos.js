@@ -154,7 +154,6 @@ class ManagePhotos extends Component {
         })
         return (
             <div className='ManagePhotos'>
-                Manage Photos
                 <Tabs
                     value={this.state.tab}
                     onChange={this.handleTabChange}

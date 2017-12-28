@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './Home.css';
 import { Carousel } from 'react-responsive-carousel';
-import pic1 from '../Assets/pic1.jpg';
-import pic2 from '../Assets/pic2.jpg';
-import pic3 from '../Assets/pic3.jpg';
 
 import axios from 'axios';
 
@@ -14,10 +11,12 @@ class Home extends Component {
         this.state = {
             products: [],
             photos: [],
+            isFeatured: true,
+            featuredPhotos: []
         }
     }
     componentDidMount() {
-        
+
         axios.get('/getallproducts').then(res => {
             
             this.setState({
@@ -30,63 +29,57 @@ class Home extends Component {
             })
         // getting all images
         axios.get('/getallimages').then(images => {
-            this.setState({
-                photos: images.data
-            }, () => console.log(this.state.photos))
+            const featuredPics = []
+            images.data.map((photo, i) => {
+                
+                if (photo.featured) {
+                    
+                    featuredPics.push(photo)
+                    this.setState({
+                    featuredPhotos: featuredPics
+                }, () => console.log('featured state', this.state.featuredPhotos))
+                    
+                }
+                
+                
+            })
+            // this.setState({
+            //     photos: images.data
+            // }, () => console.log(this.state.photos))
         })
-        
+
     }
     render() {
         // mapping over products and setting them on a variable
         const allProducts = this.state.products.map((product, i) => {
             return (
                 <div key={i} className='featuredProduct'>
-                    
+
                     <img src={product.image} alt={product.title} className='featuredProductImg' />
                     {product.title}
                 </div>
             )
         })
         // map of all products to be rendered below
-        const allPhotos = this.state.photos.map((photo, i) => {
-            return (
-                <div key={i}>
-                    
-                    <img src={photo.image} alt={photo.title}/>
-                    <p className="legend">{photo.title}</p>
-                </div>
-            )
+        const allPhotos = this.state.featuredPhotos.map((myImg, i) => {
+            // console.log(myImg);
+          
+                return (
+                    <div key={i}>
+
+                        <img src={myImg.image} alt={myImg.title} />
+                        <p className="legend">{myImg.title}</p>
+                    </div>
+                )
+            
+
         })
         return (
             <div className='Home mainContent'>
                 <div className='CarouselHolder'>
                     <Carousel showArrows={true} infiniteLoop={true} autoPlay={true} interval={6000} showStatus={false}>
                         {allPhotos}
-                        
-                        {/* <div>
-                            <img src={pic1} alt='scenery' />
-                            <p className="legend">Legend 1</p>
-                        </div>
-                        <div>
-                            <img src={pic2} alt='scenery' />
-                            <p className="legend">Legend 2</p>
-                        </div>
-                        <div>
-                            <img src={pic3} alt='scenery' />
-                            <p className="legend">Legend 3</p>
-                        </div>
-                        <div>
-                            <img src={pic1} alt='scenery' />
-                            <p className="legend">Legend 1</p>
-                        </div>
-                        <div>
-                            <img src={pic2} alt='scenery' />
-                            <p className="legend">Legend 2</p>
-                        </div>
-                        <div>
-                            <img src={pic3} alt='scenery' />
-                            <p className="legend">Legend 3</p>
-                        </div> */}
+
                     </Carousel>
                 </div>
                 {/* end of carousel holder */}

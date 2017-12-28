@@ -77,7 +77,9 @@
     transform: translate3d(0, 0, 0);
     position: relative;
     list-style: none;
-    white-space: nowrap; }
+    white-space: nowrap;  
+    display: none;}
+  
   .carousel .thumb {
     -webkit-transition: border 0.15s ease-in;
     -moz-transition: border 0.15s ease-in;
@@ -162,7 +164,8 @@
     .carousel .slide img {
       width: 100%;
       vertical-align: top;
-      border: 0; }
+      border: 0;
+    max-height: calc(100vw - 130px);}
     .carousel .slide iframe {
       display: inline-block;
       width: calc(100% - 80px);
