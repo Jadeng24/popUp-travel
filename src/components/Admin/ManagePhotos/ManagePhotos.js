@@ -8,20 +8,21 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Dropzone from 'react-dropzone';
 import PlaceholderImg from '../../Assets/noProduct.png';
-class ManagePhotos extends Component{ 
-    constructor(){
+class ManagePhotos extends Component {
+    constructor() {
         super();
- 
+
         this.state = {
             photos: [],
             title: '',
             imgUrl: '',
             locationState: '',
-            
+            featured: false,
             tab: 'a'
         }
         this.handleDrop = this.handleDrop.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.featuredImage = this.featuredImage.bind(this);
     }
 
     componentDidMount() {
@@ -29,7 +30,7 @@ class ManagePhotos extends Component{
         axios.get('/getallimages').then(images => {
             this.setState({
                 photos: images.data
-            },()=>console.log(this.state.photos))
+            }, () => console.log(this.state.photos))
         })
     }
     handleTabChange = (value) => {
@@ -37,7 +38,7 @@ class ManagePhotos extends Component{
             tab: value,
         });
     };
-    
+
     handleDrop = files => {
         const uploaders = files.map(file => {
             const formData = new FormData();
@@ -102,6 +103,18 @@ class ManagePhotos extends Component{
     //     }
 
     // }
+    featuredImage(myId, myFeatured) {
+        console.log('hi')
+        const notFeatured = !myFeatured;
+        console.log('id', myId, 'featured', notFeatured)
+        axios.put(`/imagefeatured/${myId}/${notFeatured}`).then(
+            axios.get('/getallimages').then(images => {
+                this.setState({
+                    photos: images.data
+                })
+            })
+        )
+    }
     render() {
         // styles for tab and addphoto / view photos holder
         const tabStyles = {
@@ -127,6 +140,10 @@ class ManagePhotos extends Component{
                     <div className='manageProductHeader'>
                         {/* remove product from db */}
                         <i className="fa fa-trash" aria-hidden="true" onClick={() => this.removeImage(photo.id)}></i>
+
+                        <h3>{photo.location_state}</h3>
+                        {/* change if product is in stock or out of stock */}
+                        <div className='manageInStock' onClick={() => this.featuredImage(photo.id, photo.featured)}>{photo.featured ? <h2 className='inStock manageInStock'>Featured</h2> : <h2 className='outOfStock manageInStock'>Not Featured</h2>}</div>
                     </div>
 
                     <img src={photo.image} alt={photo.title} className='manageProductImg' />
@@ -167,7 +184,7 @@ class ManagePhotos extends Component{
                                     <h2 className='dropZoneText'>{this.state.imgUrl ? 'Change Photo Image' : 'Upload Photo Image'}</h2>
                                 </Dropzone>
 
-                                
+
                             </div>
                             <TextField
                                 hintText=''
@@ -183,8 +200,57 @@ class ManagePhotos extends Component{
                                 style={{ width: '100%', maxWidth: '500px', minWidth: '100px' }}
                             >
                                 <MenuItem value={''} primaryText="" />
-                                <MenuItem value={'alabama'} primaryText="Alabama" />
-                                <MenuItem value={'arkansas'} primaryText="arkansas" />
+                                <MenuItem value={"AL"} primaryText="Alabama " />
+                                <MenuItem value={"AK"} primaryText="Alaska" />
+                                <MenuItem value={"AZ"} primaryText="Arizona" />
+                                <MenuItem value={"AR"} primaryText="Arkansas" />
+                                <MenuItem value={"CA"} primaryText="California" />
+                                <MenuItem value={"CO"} primaryText="Colorado" />
+                                <MenuItem value={"CT"} primaryText="Connecticut" />
+                                <MenuItem value={"DE"} primaryText="Delaware" />
+                                <MenuItem value={"DC"} primaryText="District Of Columbia" />
+                                <MenuItem value={"FL"} primaryText="Florida" />
+                                <MenuItem value={"GA"} primaryText="Georgia" />
+                                <MenuItem value={"HI"} primaryText="Hawaii" />
+                                <MenuItem value={"ID"} primaryText="Idaho" />
+                                <MenuItem value={"IL"} primaryText="Illinois" />
+                                <MenuItem value={"IN"} primaryText="Indiana" />
+                                <MenuItem value={"IA"} primaryText="Iowa" />
+                                <MenuItem value={"KS"} primaryText="Kansas" />
+                                <MenuItem value={"KY"} primaryText="Kentucky" />
+                                <MenuItem value={"LA"} primaryText="Louisiana" />
+                                <MenuItem value={"ME"} primaryText="Maine" />
+                                <MenuItem value={"MD"} primaryText="Maryland" />
+                                <MenuItem value={"MA"} primaryText="Massachusetts" />
+                                <MenuItem value={"MI"} primaryText="Michigan" />
+                                <MenuItem value={"MN"} primaryText="Minnesota" />
+                                <MenuItem value={"MS"} primaryText="Mississippi" />
+                                <MenuItem value={"MO"} primaryText="Missouri" />
+                                <MenuItem value={"MT"} primaryText="Montana" />
+                                <MenuItem value={"NE"} primaryText="Nebraska" />
+                                <MenuItem value={"NV"} primaryText="Nevada" />
+                                <MenuItem value={"NH"} primaryText="New Hampshire" />
+                                <MenuItem value={"NJ"} primaryText="New Jersey" />
+                                <MenuItem value={"NM"} primaryText="New Mexico" />
+                                <MenuItem value={"NY"} primaryText="New York" />
+                                <MenuItem value={"NC"} primaryText="North Carolina" />
+                                <MenuItem value={"ND"} primaryText="North Dakota" />
+                                <MenuItem value={"OH"} primaryText="Ohio" />
+                                <MenuItem value={"OK"} primaryText="Oklahoma" />
+                                <MenuItem value={"OR"} primaryText="Oregon" />
+                                <MenuItem value={"PA"} primaryText="Pennsylvania" />
+                                <MenuItem value={"RI"} primaryText="Rhode Island" />
+                                <MenuItem value={"SC"} primaryText="South Carolina" />
+                                <MenuItem value={"SD"} primaryText="South Dakota" />
+                                <MenuItem value={"TN"} primaryText="Tennessee" />
+                                <MenuItem value={"TX"} primaryText="Texas" />
+                                <MenuItem value={"UT"} primaryText="Utah" />
+                                <MenuItem value={"VT"} primaryText="Vermont" />
+                                <MenuItem value={"VA"} primaryText="Virginia" />
+                                <MenuItem value={"WA"} primaryText="Washington" />
+                                <MenuItem value={"WV"} primaryText="West Virginia" />
+                                <MenuItem value={"WI"} primaryText="Wisconsin" />
+                                <MenuItem value={"WY"} primaryText="Wyoming" />
 
                             </SelectField>
                             <button className='addProductBtn' onClick={() => this.saveImage()}>save</button>

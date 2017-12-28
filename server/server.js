@@ -137,8 +137,8 @@ app.put('/productstatus/:myId/:notStatus', pc.changeProductStatus);
 app.get('/getallimages', ic.getAllImages);
 app.post('/addimage', ic.addImage);
 app.delete('/removeimage/:id', ic.removeImage);
-
-
+app.put('/imagefeatured/:myId/:notFeatured', ic.changeImageFeatured);
+    // /imagefeatured/${ myId } /${notfeatured}
 
 // for setting up online
 const path = require('path')

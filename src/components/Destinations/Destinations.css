@@ -36,6 +36,45 @@ transition: .1s;
     font-size: 20pt;
 }
 
-.google-map {
-    background: red;
+
+.destinationsImagesHolder {
+    width: 100vw;
+    min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
 }
+.destinationImageHolder {
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px 5px;
+    
+}
+.destinationImage {
+    transition: .3s;
+    max-width:500px;
+    max-height: 500px;
+}
+.destinationImageHolder:hover .destinationTitle{
+    opacity: 1;
+}
+.destinationTitle {
+    margin-top: -50px;
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: .4;
+    width: 90%;
+    text-align: center;
+    border-radius: 5px;
+}
+@media (max-width:800px) {
+.destinationImage {
+    /* width: 100%; */
+}
+}
+
+
