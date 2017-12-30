@@ -10,7 +10,7 @@ module.exports = {
     addProduct: (req, res) => {
         const db = req.app.get('db');
         const product = req.body;
-        db.add_product(product.title, product.description, product.imgUrl, product.price,product.in_stock)
+        db.add_product(product.category, product.title, product.description, product.imgUrl, product.price,product.in_stock)
     },
     removeProduct: (req, res) => {
         const db = req.app.get('db');

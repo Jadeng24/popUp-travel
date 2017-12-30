@@ -1,8 +1,9 @@
 CREATE TABLE products
     (id SERIAL PRIMARY KEY ,
+    category VARCHAR(50),
     title VARCHAR(25),
     description VARCHAR(200),
-    image VARCHAR(100),
+    image TEXT,
     price DECIMAL NOT NULL,
     in_stock BOOL
 )

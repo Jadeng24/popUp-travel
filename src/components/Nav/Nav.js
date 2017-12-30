@@ -97,11 +97,11 @@ class Nav extends Component {
 
                 <div className={this.state.Modal ? 'modal' : ' modal hide'} onClick={this.toggleModal}>
                     <div className='modalItemsHolder'>
-                        <Link to='/about'> About </Link>
-                        <Link to='/contact'> Contact </Link>
-                        <Link to='/destinations'> Destinations</Link>
+                        <Link to='/destinations'> Destinations</Link>  
                         <Link to='/shop'> Shop </Link>
                         <Link to='/trailers'> Trailers </Link>
+                        <Link to='/about'> About </Link>
+                        <Link to='/contact'> Contact </Link>
                     </div>
                 </div>
             </div>

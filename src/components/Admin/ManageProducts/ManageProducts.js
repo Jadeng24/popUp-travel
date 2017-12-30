@@ -15,6 +15,7 @@ class ManageProducts extends Component {
         this.state = {
             products: [],
             title: '',
+            category: '',
             description: '',
             imgUrl: '',
             price: null,
@@ -144,7 +145,14 @@ class ManageProducts extends Component {
             flexDirection: 'column',
         }
         const TextFieldsAddProducts = () => (
-            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center',width: '100%' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                <TextField
+                    hintText=''
+                    floatingLabelText="Category"
+                    value={this.state.category ? this.state.category : ''}
+                    onChange={(e) => this.handleChange('category', e.target.value)}
+                    style={{ width: '100%', maxWidth: '500px', minWidth: '100px' }}
+                /><br />    
                 <TextField
                     hintText=''
                     floatingLabelText="Title"
