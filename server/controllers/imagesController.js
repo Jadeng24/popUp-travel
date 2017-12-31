@@ -18,12 +18,10 @@ module.exports = {
         db.remove_image([id]);
     },    
     changeImageFeatured: (req, res) => {
-        console.log('hi')
         const db = req.app.get('db');
         const image = req.body;
         const imageId = req.params.myId;
         const imageFeatured = req.params.notFeatured
-        console.log('contrler')
         db.change_image_featured([imageId, imageFeatured]).then(images => {
             res.send(images);
         })

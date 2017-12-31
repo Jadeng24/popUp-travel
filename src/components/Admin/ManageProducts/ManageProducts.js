@@ -29,6 +29,7 @@ class ManageProducts extends Component {
         this.getProducts = this.getProducts.bind(this);
         this.InOutofStock = this.InOutofStock.bind(this);
         this.handleTabChange = this.handleTabChange.bind(this);
+        this.featuredProduct = this.featuredProduct.bind(this);
     }
     componentDidMount() {
         // getting all products
@@ -124,6 +125,18 @@ class ManageProducts extends Component {
             })
         )
     }
+    featuredProduct(myId, myFeatured) {
+        console.log('hi')
+        const notFeatured = !myFeatured;
+        console.log('id', myId, 'featured', notFeatured)
+        axios.put(`/productfeatured/${myId}/${notFeatured}`).then(
+            axios.get('/getallproducts').then(products => {
+                this.setState({
+                    products: products.data
+                })
+            })
+        )
+    }
     render() {
 
 
@@ -195,7 +208,9 @@ class ManageProducts extends Component {
                 <div key={i} className='manageProductItem'>
                     <div className='manageProductHeader'>
                         {/* change if product is in stock or out of stock */}
-                        <div className='manageInStock' onClick={() => this.InOutofStock(product.id, product.in_stock)}>{product.in_stock ? <h2 className='inStock manageInStock'>In Stock</h2> : <h2 className='outOfStock manageInStock'>Out of Stock</h2>}</div>    
+                        <div className='manageInStock' onClick={() => this.InOutofStock(product.id, product.in_stock)}>{product.in_stock ? <h2 className='inStock manageInStock'>In Stock</h2> : <h2 className='outOfStockBtn manageInStock'>Out of Stock</h2>}</div> 
+                        {/* change if product is featured or not featured */}
+                        <div className='manageInStock' onClick={() => this.featuredProduct(product.id, product.featured)}>{product.featured ? <h2 className='inStock manageInStock'>Featured</h2> : <h2 className='outOfStockBtn manageInStock'>Not Featured</h2>}</div>
                         {/* remove product from db */}
                         <i className="fa fa-trash" aria-hidden="true" onClick={() => this.removeProduct(product.id)}></i>
                     </div>

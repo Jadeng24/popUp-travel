@@ -7,10 +7,12 @@ import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Destinations from './components/Destinations/Destinations';
 import Shop from './components/Shop/Shop';
+import ProductDetails from './components/Shop/ProductDetails.js';
 import Details from './components/Details/Details';
 import Trailers from './components/Trailers/Trailers';
 import Loading from './components/Loading/Loading.js';
 import Admin from './components/Admin/Admin.js';
+import UserProfile from './components/Admin/ManageUsers/UserProfile.js';
 import Profile from './components/Profile/Profile.js';
 import EditProfile from './components/Profile/EditProfile.js';
 import Cart from './components/Cart/Cart.js';
@@ -27,6 +29,8 @@ export default (
         <Route component={Contact} path='/contact' />
         <Route component={Destinations} path='/destinations' />
         <Route component={Shop} path='/shop' />
+        <Route component={ProductDetails} path='/productdetails/:id' />
+        
         <Route component={Details} path='/details/:productid' />
         <Route component={Trailers} path='/trailers'/>
         <Route component={Loading} path='/loading'/>
@@ -34,6 +38,7 @@ export default (
         <Route component={EditProfile} path='/editprofile'/>
         <Route component={Cart} path='/cart' />
         <Route component={Admin} path='/admin' />
+        <Route component={UserProfile} path='/userprofile/:id' />
         <Route component={ManageUsers} path='/manageusers' />
         <Route component={ManagePhotos} path='/managephotos' />
         <Route component={ManageProducts} path='/manageproducts' />

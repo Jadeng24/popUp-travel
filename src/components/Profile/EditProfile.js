@@ -169,7 +169,7 @@ class EditProfile extends Component {
                         <h3>{user.email}</h3>
                     </div>
                     <div className='EditbottomRightProfile'>
-                        <Link to={'/loading'}><div onClick={() => this.saveInfo(user.id)}><h3> {user.new_user ? 'Join now' : 'Save'} </h3></div></Link>
+                        <Link to={'/loading'}><div onClick={() => this.saveInfo(user.id)}><h3 className='ProfileBtn'> {user.new_user ? 'Join now' : 'Save'} </h3></div></Link>
                     </div>
                 </div>
 

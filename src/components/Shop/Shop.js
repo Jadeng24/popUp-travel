@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Shop.css';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 
 class Shop extends Component {
     constructor() {
@@ -25,16 +25,17 @@ class Shop extends Component {
         const allProducts = this.state.products.map((product, i) => {
             return (
                 <div key={i} className='featuredProduct'>
-
+                    <Link to={`/productdetails/${product.id}`}>
                     <img src={product.image} alt={product.title} className='featuredProductImg' />
-                    {product.title}
+                        {product.title}
+                    </Link>
                 </div>
             )
         })
 
         return (
             <div className='Shop mainContent'>
-                {allProducts}
+                <div className='productsHolder'>{allProducts}</div>
             </div>
         )
     }

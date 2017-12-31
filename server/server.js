@@ -117,10 +117,15 @@ passport.deserializeUser((id, done) => {
 //----ENDPOINTS---//
 
 
-//--------SaveUserInfo------------------//
+//--------Users------------------//
 app.put('/api/saveuser/:id', uc.saveUser);
+app.get('/getallusers', uc.getAllUsers);
 
 
+//------admin users-----//
+app.get('/detailedprofile/:id', uc.getUserById);
+// `/userprofile/${userId}`)
+app.delete('/removeuser/:id', uc.removeUser);
 //-------Send message through nodemailer---/
 app.post('/api/send_email', mc.sendEmail)
 
@@ -131,14 +136,16 @@ app.post('/addproduct', pc.addProduct);
 app.delete('/removeproduct/:id', pc.removeProduct);
 app.put('/productstatus/:myId/:notStatus', pc.changeProductStatus);
     // `/productstatus/${myId}/${myStatus}`
-
+app.put('/productfeatured/:myId/:notFeatured', pc.changeProductFeatured);
+    // /productfeatured/${myId}/${notfeatured}
+app.get('/detailedproduct/:id', pc.productDetails);
 
 //-------photos----------/
 app.get('/getallimages', ic.getAllImages);
 app.post('/addimage', ic.addImage);
 app.delete('/removeimage/:id', ic.removeImage);
 app.put('/imagefeatured/:myId/:notFeatured', ic.changeImageFeatured);
-    // /imagefeatured/${ myId } /${notfeatured}
+    // /imagefeatured/${myId}/${notfeatured}
 
 // for setting up online
 const path = require('path')

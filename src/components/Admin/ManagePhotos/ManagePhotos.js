@@ -143,7 +143,7 @@ class ManagePhotos extends Component {
 
                         <h3>{photo.location_state}</h3>
                         {/* change if product is in stock or out of stock */}
-                        <div className='manageInStock' onClick={() => this.featuredImage(photo.id, photo.featured)}>{photo.featured ? <h2 className='inStock manageInStock'>Featured</h2> : <h2 className='outOfStock manageInStock'>Not Featured</h2>}</div>
+                        <div className='manageInStock' onClick={() => this.featuredImage(photo.id, photo.featured)}>{photo.featured ? <h2 className='inStock manageInStock'>Featured</h2> : <h2 className='outOfStockBtn manageInStock'>Not Featured</h2>}</div>
                     </div>
 
                     <img src={photo.image} alt={photo.title} className='manageProductImg' />

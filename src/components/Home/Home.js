@@ -52,13 +52,16 @@ class Home extends Component {
     render() {
         // mapping over products and setting them on a variable
         const allProducts = this.state.products.map((product, i) => {
-            return (
-                <div key={i} className='featuredProduct'>
+            if (product.featured) {
+                return (
+                    <div key={i} className={product.in_stock ? 'featuredProduct' : 'featuredProduct outOfStock'} >
 
-                    <img src={product.image} alt={product.title} className='featuredProductImg' />
-                    {product.title}
-                </div>
-            )
+                        <img src={product.image} alt={product.title} className='featuredProductImg' />
+                        {product.title}
+                    </div>
+                )
+            }
+            
         })
         // map of all products to be rendered below
         const allPhotos = this.state.featuredPhotos.map((myImg, i) => {
