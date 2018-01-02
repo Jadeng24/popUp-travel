@@ -34,11 +34,12 @@ class Profile extends Component {
                 {/*===| RIGHT PROFILE SECTION |=================================*/}
                 <div className='rightProfile'>
                     <div className='topRightProfile'>
-                        <h1>{user.first_name} {user.last_name}</h1>
+                        <h1>{user.first_name} {user.last_name} </h1>
                         <h3><i class="fa fa-map-marker" aria-hidden="true"></i> {user.location_city}, {user.location_state} </h3>
                         <h3><i class="fa fa-envelope" aria-hidden="true"></i> {user.email} </h3>
                     </div>
                     <div className='bottomRightProfile'>
+                        {/* need to first make a cart and db cart for each user with foreign key to users and products     */}
                         <h1>Orders</h1>
                     </div>
                 </div>

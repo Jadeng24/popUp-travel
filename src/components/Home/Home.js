@@ -86,7 +86,7 @@ class Home extends Component {
                     </Carousel>
                 </div>
                 {/* end of carousel holder */}
-                <div className='seperatorDiv'><h2>FEATURED PRODUCTS</h2></div>
+                <div className='seperatorDiv'><h2> FEATURED PRODUCTS </h2></div>
 
                 <div className='allProductsHolder'>{allProducts}</div>
             </div>
