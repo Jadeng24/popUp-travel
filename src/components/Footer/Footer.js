@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
-// import './Footer.css';
+import './Footer.css';
 import facebook from './facebook.png';
 import instagram from './instagram.png';
 import pinterest from './pinterest.png';
